@@ -28,7 +28,7 @@
 
 ### 运行环境
 
-* W系统：indows 10/11
+* 系统：indows 10/11
 * 语言：java、JavaScript-Vue
 * 工具：IDEA、Navicat、Git
 * 项目构建：Maven 3.5.2
