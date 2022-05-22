@@ -43,8 +43,7 @@ export default {
         },
     },
     mounted() {
-        this.$store.dispatch("text", 3);
-        console.log(this.$store.state.n);
+
     },
 };
 </script>
