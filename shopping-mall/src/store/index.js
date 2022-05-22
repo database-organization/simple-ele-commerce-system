@@ -12,13 +12,10 @@ const actions = {
     },
 };
 const mutations = {
-    TEXT(state, value) {
-        state.n = state.n + value;
-        console.log("TEXT被调用了");
-    },
+
 };
 const state = {
-    n: 1,
+    drawer:false,
 };
 
 export default new Vuex.Store({

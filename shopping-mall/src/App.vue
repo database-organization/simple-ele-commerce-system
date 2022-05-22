@@ -1,26 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png"/>
-    <router-link active-class="active" to="/about">About</router-link>
-    <router-view></router-view>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <ShoppingPage></ShoppingPage>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import axios from 'axios'
-
+import ShoppingPage from "@/components/ShoppingPage";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    ShoppingPage
   },
   methods: {
-    haha() {
 
-    }
   },
   mounted() {
 
@@ -29,6 +20,7 @@ export default {
 </script>
 
 <style lang="less">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
