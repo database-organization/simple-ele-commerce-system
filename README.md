@@ -30,10 +30,21 @@
 
 ## 技术选型
 
+> 前端
+1. axios
+2. router
+3. mock
+4. pnpm
+5. element-ui
+6. vuex
+7. 全局数据总线
+8. less
+9. bootstrap
+
 ### 运行环境
 
-* 系统：windows 10/11
-* 语言：java、JavaScript-Vue
+* 系统：windows 10/11  & archlinux
+* 语言：java、JavaScript-Vue css html less 
 * 工具：IDEA、Navicat、Git
 * 项目构建：Maven 3.5.2
 * 数据库：MySQL 5.7
