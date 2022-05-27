@@ -22,7 +22,7 @@
 
 其中商户-供货商-平台登录采用相同前端界面设计
 
-![a](http://pic.netpunk.space/images/2022/05/23/QQ20220521164617.png)
+![a](http://pic.netpunk.space/images/2022/05/27/20220527145741.png)
 
 ### 老师提的验收要点
 
