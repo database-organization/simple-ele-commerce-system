@@ -53,27 +53,57 @@
 
 ### 数据表设计
 
+**中文**
 |表名|属性|备注|
 | ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
-|      |      |      |
+|客户|账号、密码、余额、地址|      |
+|商品|ID、商品名称、图片url, 价格|      |
+|商家|账号、密码、店铺名|      |
+|供应商|账号、密码、公司名|      |
+|购物车|客户账号、商品ID、数量|      |
+|订单|订单ID、客户账号、商家账号、商品ID、购买数量、是否支付、支付金额、成交时间|      |
+|已发布商品|商品ID、商家账号、发布时间、商品数量|      |
+|货单|货单ID、商家账号、供货商账号、商品ID、购买数量、支付金额、成交时间|      |
+|管理员|账号、密码|不知道需不需要这个表|
+
+**English**
+|Name|Attribute|Note|
+| ---- | ---- | ---- |
+|costumers|account, password, balacnce, address|      |
+|commodities|ID, name, url, price|      |
+|shops|account, password, name|      |
+|suppliers|account, password, name|      |
+|shopping_car|co_account, com_ID, number|      |
+|orders|ID, co_account, sh_account, com_ID, number, is_pay, total, time|      |
+|online_commodity|com_ID, sh_account, time, number|      |
+|contracts|ID, sh_account, su_account, com_ID, number, total, time|      |
+|administrator|account, password|not for sure|
 
 ### 角色与用户设计
 
+**中文**
 |角色名|权限|备注|
 | ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
-|      |      |      |
+|客户|查改(客户, {密码、余额、地址}), 增查(购物车, {客户账号、商品ID、数量})|能够完成购买流程的权限|
+|商家|      |      |
+|供应商|      |      |
+|管理员|      |      |
+
+**English**
+|Name|Privilege|Note|
+| ---- | ---- | ---- |
+|costumer|UPDATE(costumers, {password, balacnce, address})|      |
+|shop|      |      |
+|supplier|      |      |
+|administrator|      |      |
 
 ## 开发周期
 
 |时间|规划|备注|
 | ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
-|      |      |      |
+|5/27, 5/28, 5/29, 5/30, 5/31, 6/1, 6/2, 6/5, 6/12|完成基础功能开发|共9天|
+|6/13, 6/14, 6/15, 6/16|对接口＆debug|      |
+|6/17, 6/18|写文档|      |
 
 ## 具体功能
 
