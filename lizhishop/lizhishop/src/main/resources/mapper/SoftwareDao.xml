@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.starock.lizhishop.dao.SoftwareDao">
+<!--sql这里和我们学的不太一样，多留了几个参考一下-->
+    <select id="getSoftwaresOnMac" resultType="com.starock.lizhishop.entity.Software">
+        select software_id, software_name, software_picurl, min(price_value) as software_price, min(price_discount) as software_discount
+        from tbl_softwares, tbl_price
+        where software_id = software_id
+        group by software_id
+        order by software_id desc
+    </select>
+
+    <select id="getSoftwareDetail" resultType="com.starock.lizhishop.entity.Software">
+        select *
+        from tbl_softwares
+        where software_id = #{software_id}
+    </select>
+
+    <delete id="zhuXiao">
+        delete from tbl_users
+        where email = #{email}
+    </delete>
+
+    <update id="changeDetails" parameterType="com.starock.lizhishop.entity.tempSoftware">
+        update tbl_price
+        <set>
+            price_discount = #{price_value}
+        </set>
+        where price_id = #{price_id}
+    </update>
+
+</mapper>
