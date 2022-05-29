@@ -57,7 +57,7 @@
 |表名|属性|备注|
 | ---- | ---- | ---- |
 |客户|账号、密码、余额、地址|      |
-|商品|ID、商品名称、图片url, 价格|      |
+|商品|ID、商品名称、图片url, 价格, 数量|      |
 |商家|账号、密码、店铺名|      |
 |供应商|账号、密码、公司名|      |
 |购物车|客户账号、商品ID、数量|      |
@@ -70,13 +70,13 @@
 |Name|Attribute|Note|
 | ---- | ---- | ---- |
 |costumers|account, password, balacnce, address|      |
-|commodities|ID, name, url, price|      |
+|commodities|ID, name, url, price, amount|      |
 |shops|account, password, name|      |
 |suppliers|account, password, name|      |
-|shopping_car|co_account, com_ID, number|      |
-|orders|ID, co_account, sh_account, com_ID, number, is_pay, total, time|      |
-|online_commodity|com_ID, sh_account, time, number|      |
-|contracts|ID, sh_account, su_account, com_ID, number, total, time|      |
+|shopping_car|co_account, com_ID, amount|      |
+|orders|ID, co_account, sh_account, com_ID, amount, is_pay, total, time|      |
+|online_commodity|com_ID, sh_account, time, amount|      |
+|contracts|ID, sh_account, su_account, com_ID, amount, total, time|      |
 |administrator|account, password|not for sure|
 
 ### 角色与用户设计
@@ -84,18 +84,18 @@
 **中文**
 |角色名|权限|备注|
 | ---- | ---- | ---- |
-|客户|查改(客户, {密码、余额、地址}), 增查(购物车, {客户账号、商品ID、数量})|能够完成购买流程的权限|
-|商家|      |      |
-|供应商|      |      |
-|管理员|      |      |
+|客户|查改(客户, {密码、余额、地址})</br>增删查改(购物车, {客户账号、商品ID、数量})</br>增查(订单, {订单ID、客户账号、商家账号、商品ID、购买数量、是否支付、支付金额、成交时间})</br>改(订单, {是否支付})</br>增删查(商品, {ID, 价格, 数量})|能够对客户表、购物车表有主动更改权限，对订单表、商品表有被动更改权限|
+|商家|查改(商户, {密码、店铺名})</br>增删查(已发布商品, {商品ID、商家账号、发布时间、商品数量})</br>增查(货单, {货单ID、商家账号、供货商账号、商品ID、购买数量、支付金额、成交时间})</br>增删查改(商品, {商品名称, 图片url, 价格, 数量})|能够对商家表，已发布商品表有主动更改权限，对货单表、商品表有被动更改权限|
+|供应商|查改(商户, {密码、店铺名}</br>增删查改(商品, {商品名称, 价格, 数量})|能够对供应商表，商品表有主动更改权限|
+|管理员|全表增删查改||
 
 **English**
 |Name|Privilege|Note|
 | ---- | ---- | ---- |
-|costumer|UPDATE(costumers, {password, balacnce, address})|      |
-|shop|      |      |
-|supplier|      |      |
-|administrator|      |      |
+|costumer|SELECT,UPDATE(costumers, {password, balacnce, address})</br>INSERT,DELETE,SELECT,UPDATE(shopping_car, {co_account, com_ID, amount})</br>INSERT,SELECT(orders, {ID, co_account, sh_account, com_ID, amount, is_pay, total, time})</br>UPDATE(orders, {is_pay})</br>INSERT,DELETE,SELECT(commodities, {ID, price, amount})|same as above|
+|shop|SELECT,UPDATE(shops, {password, name})</br>INSERT,DELETE,SELECT(online_commodity, {com_ID, sh_account, time, amount})</br>INSERT,SELECT(contracts, {ID, sh_account, su_account, com_ID, amount, total, time})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, url, price, amount})|same as above|
+|supplier|SELECT,UPDATE(suppliers, {password, name})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, price, amount})|same as above|
+|administrator|root||
 
 ## 开发周期
 
