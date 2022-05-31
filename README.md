@@ -70,7 +70,7 @@
 |Name|Attribute|Note|
 | ---- | ---- | ---- |
 |costumers|account, password, balacnce, address|      |
-|commodities|ID, name, url, price, amount， owner|      |
+|commodities|ID, name, url, price, amount, owner|      |
 |shops|account, password, name|      |
 |suppliers|account, password, name|      |
 |shopping_car|co_account, com_ID, amount|      |
@@ -92,7 +92,7 @@
 **English**
 |Name|Privilege|Note|
 | ---- | ---- | ---- |
-|costumer|SELECT,UPDATE(costumers, {password, balacnce, address})</br>INSERT,DELETE,SELECT,UPDATE(shopping_car, {co_account, com_ID, amount})</br>INSERT,SELECT(orders, {ID, co_account, sh_account, com_ID, amount, is_pay, total, time})</br>UPDATE(orders, {is_pay})</br>INSERT,DELETE,SELECT(commodities, {ID, price, amount})|same as above|
+|costumer|SELECT,UPDATE(costumers, {password, balacnce, address})</br>INSERT,DELETE,SELECT,UPDATE(shopping_car, {co_account, com_ID, amount})</br>INSERT,SELECT(orders, {ID, co_account, sh_account, com_ID, amount, is_pay, total, time})</br>UPDATE(orders, {is_pay})</br>INSERT,DELETE,SELECT(commodities, {ID, name, url, price, amount, owner})|same as above|
 |shop|SELECT,UPDATE(shops, {password, name})</br>INSERT,DELETE,SELECT(online_commodity, {com_ID, sh_account, time, amount})</br>INSERT,SELECT(contracts, {ID, sh_account, su_account, com_ID, amount, total, time})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, url, price, amount})|same as above|
 |supplier|SELECT,UPDATE(suppliers, {password, name})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, price, amount})|same as above|
 |administrator|root||
