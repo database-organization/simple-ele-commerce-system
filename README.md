@@ -57,7 +57,7 @@
 |表名|属性|备注|
 | ---- | ---- | ---- |
 |客户|账号、密码、余额、地址|      |
-|商品|ID、商品名称、图片url, 价格, 数量|      |
+|商品|ID、商品名称、图片url, 价格, 数量, 所有者|      |
 |商家|账号、密码、店铺名|      |
 |供应商|账号、密码、公司名|      |
 |购物车|客户账号、商品ID、数量|      |
@@ -70,7 +70,7 @@
 |Name|Attribute|Note|
 | ---- | ---- | ---- |
 |costumers|account, password, balacnce, address|      |
-|commodities|ID, name, url, price, amount|      |
+|commodities|ID, name, url, price, amount， owner|      |
 |shops|account, password, name|      |
 |suppliers|account, password, name|      |
 |shopping_car|co_account, com_ID, amount|      |
