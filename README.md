@@ -57,7 +57,7 @@
 |表名|属性|备注|
 | ---- | ---- | ---- |
 |客户|账号、密码、余额、地址|      |
-|商品|ID、商品名称、图片url, 价格, 数量|      |
+|商品|ID、商品名称、图片url, 价格, 数量, 所有者|      |
 |商家|账号、密码、店铺名|      |
 |供应商|账号、密码、公司名|      |
 |购物车|客户账号、商品ID、数量|      |
@@ -70,7 +70,7 @@
 |Name|Attribute|Note|
 | ---- | ---- | ---- |
 |costumers|account, password, balacnce, address|      |
-|commodities|ID, name, url, price, amount|      |
+|commodities|ID, name, url, price, amount, owner|      |
 |shops|account, password, name|      |
 |suppliers|account, password, name|      |
 |shopping_car|co_account, com_ID, amount|      |
@@ -92,7 +92,7 @@
 **English**
 |Name|Privilege|Note|
 | ---- | ---- | ---- |
-|costumer|SELECT,UPDATE(costumers, {password, balacnce, address})</br>INSERT,DELETE,SELECT,UPDATE(shopping_car, {co_account, com_ID, amount})</br>INSERT,SELECT(orders, {ID, co_account, sh_account, com_ID, amount, is_pay, total, time})</br>UPDATE(orders, {is_pay})</br>INSERT,DELETE,SELECT(commodities, {ID, price, amount})|same as above|
+|costumer|SELECT,UPDATE(costumers, {password, balacnce, address})</br>INSERT,DELETE,SELECT,UPDATE(shopping_car, {co_account, com_ID, amount})</br>INSERT,SELECT(orders, {ID, co_account, sh_account, com_ID, amount, is_pay, total, time})</br>UPDATE(orders, {is_pay})</br>INSERT,DELETE,SELECT(commodities, {ID, name, url, price, amount, owner})|same as above|
 |shop|SELECT,UPDATE(shops, {password, name})</br>INSERT,DELETE,SELECT(online_commodity, {com_ID, sh_account, time, amount})</br>INSERT,SELECT(contracts, {ID, sh_account, su_account, com_ID, amount, total, time})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, url, price, amount})|same as above|
 |supplier|SELECT,UPDATE(suppliers, {password, name})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, price, amount})|same as above|
 |administrator|root||
