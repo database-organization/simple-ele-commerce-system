@@ -38,7 +38,7 @@
 * 语言：java、JavaScript-Vue
 * 工具：IDEA、Navicat、Git
 * 项目构建：Maven 3.5.2
-* 数据库：MySQL 5.7
+* 数据库：MySQL 8.0
 
 ### 前端技术
 
@@ -144,4 +144,16 @@
 https://efficient-violin-63b.notion.site/6ca1a4da43974fcbab191f2fd6c7e574
 
 
+
+## 环境搭建
+
+### 前端环境
+
+### 后端环境
+
+**数据库容器创建＆运行**
+
+~~~bash
+docker run -d --name mysql_ex -v /home/shopping:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456  -p 3366:3306 mysql:8.0
+~~~
 
