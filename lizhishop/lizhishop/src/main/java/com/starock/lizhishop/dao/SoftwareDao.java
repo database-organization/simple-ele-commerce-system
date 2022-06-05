@@ -18,6 +18,9 @@ public interface SoftwareDao {
 
     //************************客户相关操作语句******************************/
 
+    //查询所有商品
+    public boolean selectAllCom ();
+
     //更新客户密码
     public boolean updateCoPwd (@Param("name"),@Param("newPwd"));
 

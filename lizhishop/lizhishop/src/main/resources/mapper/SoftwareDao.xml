@@ -35,6 +35,11 @@
     <!--下面是lyb写的
     /************************客户相关操作语句******************************/-->
 
+    <!--查询所有商品-->
+    <select id="selectAllCom" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM commodities
+    </select>
+
     <!--更新客户密码-->
     <update id="updateCoPwd" resultType="com.starock.lizhishop.entity.Software">
         UPDATE costumers
