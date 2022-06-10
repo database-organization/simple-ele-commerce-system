@@ -157,3 +157,15 @@ https://efficient-violin-63b.notion.site/6ca1a4da43974fcbab191f2fd6c7e574
 docker run -d --name mysql_ex -v /home/shopping:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456  -p 3366:3306 mysql:8.0
 ~~~
 
+## 团队分工
+
+根据报告书写要求，增加团队分工表格
+
+| 姓名   | 负责模块 | 特点 |
+| ------ | -------- | ---- |
+| 廖温建 |          |      |
+| 李一奔 |          |      |
+| 林广兰 |          |      |
+| 孙文祥 |          |      |
+| 张哲   |          |      |
+
