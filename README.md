@@ -22,23 +22,41 @@
 
 其中商户-供货商-平台登录采用相同前端界面设计
 
+**数据库设计图**
+
 ![a](http://pic.netpunk.space/images/2022/05/27/20220527145741.png)
 
-### 老师提的验收要点
+**UML类图**
+
+
+
+**老师提的验收要点**
 
 * 数据表符合规范
-* 数据库设置（也就是数据库使用的内容）
+* 数据库设置
 * 权限管理
 
 ## 技术选型
 
 ### 运行环境
 
+* 硬件环境：单机云服务器
+
+| 硬件 | 说明                                          |
+| ---- | --------------------------------------------- |
+| CPU  | Intel(R) Xeon(R) Platinum 8255C CPU @ 2.50GHz |
+| 内存 | 4GiB System Memory                            |
+| 磁盘 | normal 79GiB EXT4 volume                      |
+
 * 系统：windows 10/11
 * 语言：java、JavaScript-Vue
 * 工具：IDEA、Navicat、Git
 * 项目构建：Maven 3.5.2
 * 数据库：MySQL 8.0
+
+选择MySQL 8.0的**原因**：
+
+开源、经典，资料多，构建方便，功能完备（支持角色权限管理），balabala
 
 ### 前端技术
 
@@ -97,6 +115,32 @@
 |supplier|SELECT,UPDATE(suppliers, {password, name})</br>INSERT,DELETE,SELECT,UPDATE(commodities, {name, price, amount})|same as above|
 |administrator|root||
 
+### 优化设计
+
+#### 性能参数
+
+在MySQL中使用`SHOW STATUS`能够查看MySQL数据库的性能参数，我们可以根据这些性能参数来了解MySQL数据库的状态，并制定合理的优化策略。一共有356个。
+
+
+
+#### 查询优化(optional)
+
+使用`EXPLAIN`可列举出查询语句的算子调用栈，查看查询性能瓶颈，对频繁调用的语句进行调优。
+
+
+
+#### 建立索引
+
+对常用数据表建立索引，虽然占内存，但是很提升性能
+
+
+
+#### 数据库安全(optional)
+
+一主一备，
+
+
+
 ## 开发周期
 
 |时间|规划|备注|
@@ -137,23 +181,55 @@
 
 
 
-## 后端代码操作指南
+## 操作指南
 
-这是关于如何在后端实现代码修改的文章，可以方便大家之后合作开发
+以下文章都是我们自己写的
 
-https://efficient-violin-63b.notion.site/6ca1a4da43974fcbab191f2fd6c7e574
+* 关于Git和Github合作开发 [链接](http://blog.netpunk.space/2022/05/21/使用git与github合作开发/)
 
-
+* 这是关于如何在后端实现代码修改的文章，可以方便大家之后合作开发 [链接](https://efficient-violin-63b.notion.site/6ca1a4da43974fcbab191f2fd6c7e574)
 
 ## 环境搭建
 
+有用什么东西就些什么东西，这种用来报告灌水即好看又方便
+
 ### 前端环境
+
+
 
 ### 后端环境
 
-**数据库容器创建＆运行**
+数据库容器创建＆运行
 
 ~~~bash
 docker run -d --name mysql_ex -v /home/shopping:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456  -p 3366:3306 mysql:8.0
 ~~~
+
+
+
+## 集成测试
+
+### 功能测试
+
+
+
+### 性能测试(optional)
+
+
+
+## 问题＆求解
+
+这里也很好灌水
+
+## 团队分工
+
+根据报告书写要求，增加团队分工表格
+
+| 姓名   | 负责模块 | 特点 |
+| ------ | -------- | ---- |
+| 廖温建 |          |      |
+| 李一奔 |          |      |
+| 林广兰 |          |      |
+| 孙文祥 |          |      |
+| 张哲   |          |      |
 
