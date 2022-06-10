@@ -31,4 +31,190 @@
         where price_id = #{price_id}
     </update>
 
+
+    <!--下面是lyb写的
+    /************************客户相关操作语句******************************/-->
+
+    <!--查询所有商品-->
+    <select id="selectAllCom" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM commodities
+    </select>
+
+    <!--更新客户密码-->
+    <update id="updateCoPwd" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE costumers
+        <set>
+            password =#{newPwd}
+        </set>
+        WHERE account =#{name}
+    </update>
+
+    <!--更新客户余额-->
+    <update id="updateCoBalacnce" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE costumers
+        <set>
+            balacnce =#{newBlc}
+        </set>
+        WHERE account =#{name}
+    </update>
+
+    <!--更新客户地址-->
+    <update id="updateCoBalacnce" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE costumers
+        <set>
+            address =#{newAdrs}
+        </set>
+        WHERE account =#{name}
+    </update>
+
+    <!--删除某客户-->
+    <delete id="deleteCo" resultType="com.starock.lizhishop.entity.Software">
+        DELETE FROM costumers WHERE account =#{name}
+    </delete>
+
+    <!--将某商品增加至购物车中-->
+    <insert id="addToShoppingCar" resultType="com.starock.lizhishop.entity.Software">
+        INSERT INTO shopping_car
+        (co_account, com_ID, amount)
+        VALUES
+        (#{co_account},#{comID},#{amount})
+    </insert>
+
+    <!--将某商品从购物车中删除-->
+    <delete id="deleteFromShoppingCar" resultType="com.starock.lizhishop.entity.Software">
+        DELETE FROM shopping_car WHERE co_account = #{co_account} AND com_ID = #{comID}
+    </delete>
+
+    <!--查询购物车中某商品的数量-->
+    <select id="updateAmountInShoppingCar" resultType="com.starock.lizhishop.entity.Software">
+        SELECT amount FROM shopping_car WHERE co_account = #{co_account} AND com_ID = #{comID}
+    </select>
+
+    <!--修改购物车中某商品的数量-->
+    <update id="updateAmountInShoppingCar" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE shopping_car
+        <set>
+            amount = #{amount}
+        </set>
+        WHERE co_account = #{co_account} AND com_ID = #{comID}
+    </update>
+
+    <!--把所有商品从购物车添加进订单 TODO:FIX BUG-->
+    <insert id="addFromShoppingCarToOrders" resultType="com.starock.lizhishop.entity.Software">
+        INSERT INTO orders
+        (co_account, sh_account, com_ID, amount, is_pay, total)
+        VALUES
+        (#{co_account},#{owner},#{comID},null,null,null)
+    </insert>
+
+    <!--查询订单-->
+    <select id="selectAllOrdersState" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM orders WHERE co_account = #{co_account}  GROUP BY time
+    </select>
+
+
+    <!--修改订单状态（isPay） 用户查某个具体商品的订单应该是用账号和商品ID去查的-->
+    <update id="updateSingleOrders" resultType="com.2starock.lizhishop.entity.Software">
+        UPDATE orders
+        <set>
+            is_pay = '是'
+        </set>
+        WHERE co_account = #{co_account} AND com_ID = #{comID} AND time = #{time}
+    </update>
+
+    <!--/************************商家相关操作语句******************************/-->
+
+    <!--商家查看信息-->
+    <select id="selectAllShops" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM shops WHERE account = #{account}
+    </select>
+
+    <!--商家修改密码和店铺名-->
+    <update id="updatePwdAndName" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE shops
+        <set>
+            password = #{newPwd}, name = #{newName}
+        </set>
+        WHERE account = #{account}
+    </update>
+
+    <!--查询已发布商品-->
+    <select id="selectOnlineCom" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM online_commodity WHERE sh_account = #{sh_account}
+    </select>
+
+    <!--增加已发布商品-->
+    <insert id="insertOnlineCom" resultType="com.starock.lizhishop.entity.Software">
+        INSERT INTO online_commodity (com_ID, sh_account, amount)
+        VALUES
+        (#{comID},#{sh_account}, #{amount})
+    </insert>
+
+    <!--取消已发布商品-->
+    <delete id="deleteOnlineCom" resultType="com.starock.lizhishop.entity.Software">
+        DELETE FROM online_commodity WHERE com_ID = #{comID} AND sh_account = #{sh_account}
+    </delete>
+
+    <!--增加货单，增加商品-->
+    <insert id="insertContracts" resultType="com.starock.lizhishop.entity.Software">
+        INSERT INTO contracts (ID, sh_account, su_account, com_ID, amount, total)
+        VALUES
+        (#{ID},#{sh_account},#{su_account},#{com_ID},#{amount})
+    </insert>
+
+    <insert id="insertCommodities" resultType="com.starock.lizhishop.entity.Software">
+        INSERT INTO commodities (ID, name, url, price, amount, owner)
+        VALUES
+        (#{ID},#{name},#{url},#{price},#{amount},#{owner})
+    </insert>
+
+    <!--查询相关供应商-->
+    <select id="selectContracts" resultType="com.starock.lizhishop.entity.Software">
+        WITH a AS (SELECT * FROM contracts WHERE contracts.sh_account = #{sh_account})
+        SELECT * FROM suppliers WHERE suppliers.account = a.su_account
+    </select>
+
+    <!--查询商品-->
+    <select id="shopSelectAllCom" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM commodities WHERE owner = #{owner};
+    </select>
+
+    <!--改动商品-->
+    <update id="updatePwdAndName" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE commodities
+        <set>
+            name = #{newName}, url =#{newURL}, price = #{newPrice}, amount = #{newAmount}
+        </set>
+        WHERE owner = #{owner}
+    </update>
+
+    <!--/************************供应商相关操作语句******************************/-->
+
+    <!--#供应商查询所有商品-->
+    <select id="selectAllCom" resultType="com.starock.lizhishop.entity.Software">
+        SELECT * FROM commodities WHERE commodities.ownerAccount = #{ownerAccount}
+    </select>
+
+    <!--#供应商增加新商品-->
+    <insert id="insertNewCom" resultType="com.starock.lizhishop.entity.Software">
+        INSERT INTO commodities (name, price, amount, ownerAccount)
+        VALUES
+        (#{name}, #{price}, #{amount},#{ownerAccount})
+    </insert>
+
+    <!--#供应商查询有关商户-->
+    <select id="selectContractShop" resultType="com.starock.lizhishop.entity.Software">
+        WITH a AS(SELECT * FROM contracts WHERE contracts.su_account = #{su_account})
+        SELECT * FROM shops WHERE shops.account = a.sh_account;
+    </select>
+
+    <!--#供应商修改密码和公司名-->
+    <update id="updateSuoolierInfo" resultType="com.starock.lizhishop.entity.Software">
+        UPDATE supplier
+        <set>
+            password = #{newPwd}, name = #{newName}
+        </set>
+        WHERE account = #{account}
+    </update>
+
 </mapper>
