@@ -60,7 +60,12 @@
 
 ### 前端技术
 
-* Vue生态
+* Vue3.0
+* typescript
+* vuex
+* router
+* quasar
+* mock
 
 ### 后端技术
 
