@@ -72,6 +72,7 @@
 ### 数据表设计
 
 **中文**
+
 |表名|属性|备注|
 | ---- | ---- | ---- |
 |客户|账号、密码、余额、地址|      |
@@ -80,7 +81,7 @@
 |供应商|账号、密码、公司名|      |
 |购物车|客户账号、商品ID、数量|      |
 |订单|订单ID、客户账号、商家账号、商品ID、购买数量、是否支付、支付金额、成交时间|      |
-|已发布商品|商品ID、商家账号、发布时间、商品数量|      |
+|已发布商品|商品ID、商家账号、发布时间|      |
 |货单|货单ID、商家账号、供货商账号、商品ID、购买数量、支付金额、成交时间|      |
 |管理员|账号、密码|不知道需不需要这个表|
 
@@ -93,7 +94,7 @@
 |suppliers|account, password, name|      |
 |shopping_car|co_account, com_ID, amount|      |
 |orders|ID, co_account, sh_account, com_ID, amount, is_pay, total, time|      |
-|online_commodity|com_ID, sh_account, time, amount|      |
+|online_commodity|com_ID, sh_account, time|      |
 |contracts|ID, sh_account, su_account, com_ID, amount, total, time|      |
 |administrator|account, password|not for sure|
 
@@ -102,7 +103,7 @@
 **中文**
 |角色名|权限|备注|
 | ---- | ---- | ---- |
-|客户|查改(客户, {密码、余额、地址})</br>增删查改(购物车, {客户账号、商品ID、数量})</br>增查(订单, {订单ID、客户账号、商家账号、商品ID、购买数量、是否支付、支付金额、成交时间})</br>改(订单, {是否支付})</br>增删查(商品, {ID, 价格, 数量})|能够对客户表、购物车表有主动更改权限，对订单表、商品表有被动更改权限|
+|客户|查改(客户, {密码、余额、地址})</br>增删查改(购物车, {客户账号、商品ID、数量})</br>增查(订单, {订单ID、客户账号、商家账号、商品ID、购买数量、是否支付、支付金额、成交时间})</br>改(订单, {是否支付})</br>增删查(商品, {ID, 价格, 数量})|能够对客户表、购物车表有主动更改权限，对有被动更改权限|
 |商家|查改(商户, {密码、店铺名})</br>增删查(已发布商品, {商品ID、商家账号、发布时间、商品数量})</br>增查(货单, {货单ID、商家账号、供货商账号、商品ID、购买数量、支付金额、成交时间})</br>增删查改(商品, {商品名称, 图片url, 价格, 数量})|能够对商家表，已发布商品表有主动更改权限，对货单表、商品表有被动更改权限|
 |供应商|查改(商户, {密码、店铺名}</br>增删查改(商品, {商品名称, 价格, 数量})|能够对供应商表，商品表有主动更改权限|
 |管理员|全表增删查改||
@@ -137,8 +138,7 @@
 
 #### 数据库安全(optional)
 
-一主一备，
-
+一主一备
 
 
 ## 开发周期
@@ -202,7 +202,7 @@
 数据库容器创建＆运行
 
 ~~~bash
-docker run -d --name mysql_ex -v /home/shopping:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456  -p 3366:3306 mysql:8.0
+docker run -d --name mysql_ex1 -v /home/shopping:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 12312:22 -p 3366:3306 mysql:8.0
 ~~~
 
 

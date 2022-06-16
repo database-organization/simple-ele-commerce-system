@@ -20,18 +20,21 @@ public class OrdersController {
     @Autowired
     OrdersService ordersService;
 
+    //获取订单
     @PostMapping("selectAllOrdersState")
     public Map<String,Object> SelectAllOrdersState(@RequestBody Map<String,Object> map){
         Map<String,Object> stringObjectMap=ordersService.selectAllOrdersState(map);
         return stringObjectMap;
     }
 
+    //更新订单信息
     @PostMapping("/updateOrder")
     public Map<String,Object> UpdateOrder(@RequestBody Map<String,Object>map){
         Map<String,Object> stringObjectMap=ordersService.updateOrder(map);
         return stringObjectMap;
     }
 
+    //删除订单信息
     @PostMapping("/deleteOrder")
     public Map<String,Object> DeleteOrder(@RequestBody Map<String,Object>map){
         Map<String,Object> stringObjectMap=ordersService.deleteOrder(map);

@@ -23,7 +23,6 @@ public class CommoditiesServiceImpl  implements CommoditiesService {
     @Override
     public Map<String, Object> SelectAllCom(Map<String, Object> map) {
         Map map2=(Map) map.get("Date");
-
         List<Commodities> comList=commoditiesDao.selectAllCom();
         Map<String,Object> result=new HashMap<>();
         result.put("Data",comList);

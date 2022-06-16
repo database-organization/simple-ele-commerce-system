@@ -19,6 +19,7 @@ import java.util.Map;
 public class ShoppingCarServiceImpl implements ShoppingCarService {
     @Autowired
     ShoppingcarDao shoppingcarDao;
+
     @Override
     public Map<String, Object> ChangeShoppingCar(Map<String, Object> map) {
         Map map2=(Map)map.get("Body");
@@ -49,17 +50,9 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
         String co_account=map2.get("co_account").toString();
 
         List<ShoppingCar> car =shoppingcarDao.queryshopcar(co_account);
-        List<Integer> com_ID=new ArrayList<>();
-        List<Integer> amount=new ArrayList<>();
-        for (int i=0;i<car.size();i++){
-            com_ID.add(car.get(i).getCom_ID());
-            amount.add(car.get(i).getCom_ID());
-        }
         Map<String,Object> result=new HashMap<>();
         Map<String,Object> map3=new HashMap<>();
-        map3.put("com_ID",com_ID);
-        map3.put("amount",amount);
-        result.put("Body",map3);
+        result.put("Body",car);
         return result;
     }
 
