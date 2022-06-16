@@ -21,6 +21,7 @@ public class CostumersController {
     @Autowired
     CostumersService costumersService;
 
+    //http://1.14.100.228:9090/
     @PostMapping("/signin")
     public Map<String, Object> Login(@RequestBody Map<String, Object> map) {
         return costumersService.Login(map);
@@ -30,4 +31,5 @@ public class CostumersController {
     public Map<String,Object>Update(@RequestBody Map<String,Object> map){
         return costumersService.Update(map);
     }
+
 }
